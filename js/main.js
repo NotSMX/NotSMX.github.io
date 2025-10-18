@@ -1,54 +1,45 @@
+import { Player } from './player.js';
+import { setupInput } from './input.js';
+import { FLOOR_Y } from './constants.js';
+import { drawAttackOptions, checkAttackHit } from './attack.js';
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-// Load sprite sheet
+setupInput();
+
 const sprite = new Image();
-sprite.src = 'SMX-Sheet.png'; // adjust path if needed
-console.log("Sprite loaded:", sprite.width, sprite.height);
+sprite.src = 'images/SMX-Sheet.png';
 
-// Sprite details
-const frameWidth = 84;
-const frameHeight = 68;
-const scale = 5; // 500%
-const scaledWidth = frameWidth * scale;
-const scaledHeight = frameHeight * scale;
+let player;
 
-// Player state
-let x = 0;
-let y = 0;
-let direction = 'right';
-let state = 'idle'; // start | idle | move | attack
-
-const attackOptions = document.getElementById('attack-options');
-
-// Input handling
-const keys = {};
-document.addEventListener('keydown', e => keys[e.key] = true);
-document.addEventListener('keyup', e => keys[e.key] = false);
+sprite.onload = () => {
+  player = new Player(sprite, 100, 0, 0.5);
+  player.setup();
+  gameLoop();
+};
 
 function update() {
-  if (keys['ArrowLeft']) {
-    x -= 5;
-    state = 'move';
-    direction = 'left';
-  } else if (keys['ArrowRight']) {
-    x += 5;
-    state = 'move';
-    direction = 'right';
-  } else if (keys[' ']) { // spacebar attack
-    state = 'attack';
-    showAttackOptions();
-  } else {
-    state = 'idle';
-    hideAttackOptions();
-  }
+  if (!player) return;
+  player.update();
+
+  // Check collision between player's attack and options
+  checkAttackHit(player);
 }
 
-function showAttackOptions() {
-  attackOptions.classList.remove('hidden');
-  attackOptions.innerHTML = `
-    <a href="page1.html" class="attack-link">⚡ Combo 1</a>
-    <a href="page2.html" class="attack-link">🔥 Combo 2</a>
-    <a href="page3.html" class="attack-link">💥 Combo 3</a>
-  `;
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+  // Draw player
+  if (player) player.draw(ctx);
+
+  // Draw attack options (always visible)
+  drawAttackOptions(ctx);
+}
+
+function gameLoop() {
+  update();
+  draw();
+  requestAnimationFrame(gameLoop);
 }
