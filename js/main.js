@@ -14,7 +14,7 @@ sprite.src = 'images/SMX-Sheet.png';
 let player;
 
 sprite.onload = () => {
-  player = new Player(sprite, 100, 0, 0.5);
+  player = new Player(sprite, canvas, 0.5);
   player.setup();
   gameLoop();
 };
