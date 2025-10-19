@@ -7,9 +7,8 @@ export class Player {
     this.sprite = sprite;
     this.scale = scale;
     this.canvas = canvas;
-
     this.x = canvas.width / 2; // start centered
-    this.y = FLOOR_Y + 100;          // on the ground
+    this.y = FLOOR_Y + 100; // on the ground
     this.vx = 0;
     this.vy = 0;
     this.direction = 'left';
@@ -17,13 +16,15 @@ export class Player {
     this.turning = false;
     this.state = 'start'; // “cutscene” animation frame
     this.canMove = false; // no input until intro ends
-    this.totalFrames = 52;
+    this.totalFrames = 63;
     this.frameWidth = 0;
     this.frameHeight = 0;
     this.scaledWidth = 0;
     this.scaledHeight = 0;
     this.frameIndex = 0;
     this.frameTimer = 0;
+    this.hitRegistered = false;
+    this.isAttacking = false;
     this.frameSpeed = 20; // lower is faster
     this.animations = {
       start: [0,1,2,3,4,5,6], 
@@ -35,9 +36,15 @@ export class Player {
       moveRightStartUp: [23,24,25],
       moveRight: [26,27,28,29,30,31],
       rightToLeft: [32,33,34,35,36],          
-      attack: [37],
-      jumpLeft: [38,39,40,41,42,43,44],
-      jumpRight: [45,46,47,48,49,50,51]
+      jumpLeft: [37,38,39,40,41,42,43],
+      jumpRight: [44,45,46,47,48,49,50],
+      lightAttackLeft: [51,52,53,54,55,56],
+      lightAttackRight: [57,58,59,60,61,62],
+    };
+    this.attackHitboxes = {
+      // frameIndex: { offsetX, offsetY, width, height }
+      1: { offsetX: 30, offsetY: -200, width: 60, height: 300 },
+      2: { offsetX: 60, offsetY: -200, width: 60, height: 150 },
     };
   }
 
@@ -49,44 +56,63 @@ export class Player {
   }
 
   update() {
-  // During start animation
+    // START ANIMATION
     if (this.state === 'start') {
       this.frameTimer++;
       if (this.frameTimer >= this.frameSpeed) {
         this.frameTimer = 0;
         this.frameIndex++;
-
-        // If finished last frame of start animation
         if (this.frameIndex >= this.animations.start.length) {
           this.setState('idle');
         }
       }
 
-      // Apply gravity while in start animation
       this.vy += GRAVITY;
       this.y += this.vy;
       if (this.y >= FLOOR_Y) {
         this.y = FLOOR_Y;
         this.vy = 0;
       }
-
-      return; // skip input until start finishes
+      return;
     }
-    // Detect input
+
+    // --- ATTACK LOCK ---
+    if (this.isAttacking) {
+      this.vx *= FRICTION;
+      this.x += this.vx;
+      // allow cancel ONLY if another attack is pressed (on ground)
+      if (keys[' '] && this.y >= FLOOR_Y && this.frameIndex >= 4) {
+        this.setState('attack'); // restart attack animation
+        this.frameIndex = 0;
+        this.hitRegistered = false; // reset hit
+      }
+
+      this.frameTimer++;
+      if (this.frameTimer >= this.frameSpeed) {
+        this.frameTimer = 0;
+        const currentAnim = this.getCurrentAnimation();
+        this.frameIndex++;
+
+        // end of attack animation
+        if (this.frameIndex >= currentAnim.length) {
+          this.isAttacking = false;
+          this.setState('idle');
+        }
+      }
+      return; // stop here, ignore movement/jump input
+    }
+
+    // --- MOVEMENT INPUT ---
     if (keys['ArrowLeft']) {
       this.vx -= ACCEL;
       if (this.vx < -MAX_SPEED) this.vx = -MAX_SPEED;
 
-      // Only trigger turning animation if NOT jumping
       if (this.direction === 'right' && Math.abs(this.vx) >= MAX_SPEED - 0.5 && this.state !== 'jump') {
         this.setState('rightToLeft');
         this.turning = true;
       } else {
         this.direction = 'left';
-        // Only set to move if not turning, not attacking, and not jumping
-        if (!this.turning && this.state !== 'attack' && this.state !== 'jump') {
-          this.setState('move');
-        }
+        if (!this.turning && this.state !== 'jump') this.setState('move');
       }
 
     } else if (keys['ArrowRight']) {
@@ -98,77 +124,63 @@ export class Player {
         this.turning = true;
       } else {
         this.direction = 'right';
-        if (!this.turning && this.state !== 'attack' && this.state !== 'jump') {
-          this.setState('move');
-        }
+        if (!this.turning && this.state !== 'jump') this.setState('move');
       }
 
     } else {
-      // No input, apply friction
       this.vx *= FRICTION;
       if (Math.abs(this.vx) < 0.05) this.vx = 0;
-
-      // Only return to idle if not turning, attacking, or jumping
-      if (!this.turning && this.state !== 'attack' && this.state !== 'jump') {
-        this.setState('idle');
-      }
+      if (!this.turning && this.state !== 'jump') this.setState('idle');
     }
 
-
-    // Jump
+    // --- JUMP ---
     if (keys['ArrowUp'] && this.y >= FLOOR_Y) {
       this.vy = JUMP_STRENGTH;
       this.setState('jump');
     }
 
-    // Attack
-    if (keys[' ']) {
+    
+    // --- ATTACK START (ground only) ---
+    if (keys[' '] && this.y >= FLOOR_Y) {
       this.setState('attack');
-    } else if (this.state === 'attack') {
-      this.setState('idle');
+      this.isAttacking = true;
     }
 
-    // Apply physics
+    // --- PHYSICS ---
     this.vy += GRAVITY;
     this.y += this.vy;
     this.x += this.vx;
 
-    // Floor collision
     if (this.y >= FLOOR_Y) {
       this.y = FLOOR_Y;
       this.vy = 0;
 
-      // When landing, return to idle/move
       if (this.state === 'jump') {
         this.setState('idle');
       }
     }
 
+    // --- FRAME UPDATES (non-attack states) ---
     this.frameTimer++;
     if (this.frameTimer >= this.frameSpeed) {
       this.frameTimer = 0;
       const currentAnim = this.getCurrentAnimation();
       this.frameIndex++;
 
-      console.log(this.state,this.frameIndex,currentAnim.length);
       if (this.frameIndex >= currentAnim.length) {
         if (this.turning) {
           if (this.state === 'leftToRight') {
             this.turning = false;
             this.direction = 'right';
-            this.frameIndex = 26; // resume mid-run
+            this.frameIndex = 26;
             this.setState('move');
-            
-          } 
-          else if (this.state === 'rightToLeft') {
+          } else if (this.state === 'rightToLeft') {
             this.turning = false;
             this.direction = 'left';
-            this.frameIndex = 11; // resume mid-run
+            this.frameIndex = 11;
             this.setState('move');
-            
           }
         } else {
-          // Normal loop for idle/move/attack
           this.frameIndex = 0;
         }
       }
@@ -176,11 +188,58 @@ export class Player {
   }
 
 
+  getCurrentAnimation() {
+    switch (this.state) {
+      case 'start': return this.animations.start;
+      case 'idle': return this.direction === 'right' ? this.animations.idleRight : this.animations.idleLeft;
+      case 'move':
+        return this.direction === 'right'
+          ? (Math.abs(this.vx) < MAX_SPEED ? this.animations.moveRightStartUp : this.animations.moveRight)
+          : (Math.abs(this.vx) < MAX_SPEED ? this.animations.moveLeftStartUp : this.animations.moveLeft);
+      case 'leftToRight': return this.animations.leftToRight;
+      case 'rightToLeft': return this.animations.rightToLeft;
+      case 'jump': return this.direction === 'right' ? this.animations.jumpRight : this.animations.jumpLeft;
+      case 'attack': return this.direction === 'right' ? this.animations.lightAttackRight : this.animations.lightAttackLeft;
+      default: return this.animations.idleRight;
+    }
+  }
+
+  getAttackHitbox() {
+    if (this.state !== 'attack') return null;
+
+    const data = this.attackHitboxes[this.frameIndex];
+    if (!data) return null; // no hitbox for this frame
+
+    let { offsetX, offsetY, width, height } = data;
+
+    // Flip horizontally if facing left
+    if (this.direction === 'left') {
+      offsetX = -offsetX - width;
+    }
+
+    return {
+      x: this.x + offsetX,
+      y: this.y + offsetY,
+      width,
+      height
+    };
+  }
+
   draw(ctx) {
     if (!this.frameWidth || !this.frameHeight) return;
 
     const currentAnim = this.getCurrentAnimation();
     const animFrame = currentAnim[this.frameIndex];
+
+    // Debug draw
+    // ctx.save();
+    // ctx.strokeStyle = 'red';
+    // ctx.lineWidth = 2;
+    // const playerHitbox = this.getAttackHitbox();
+    // if (playerHitbox) {
+    //   ctx.strokeRect(playerHitbox.x, playerHitbox.y, playerHitbox.width, playerHitbox.height);
+    // }
+    // ctx.restore();
 
     ctx.drawImage(
       this.sprite,
@@ -191,30 +250,15 @@ export class Player {
     );
   }
 
-  getCurrentAnimation() {
-    switch (this.state) {
-      case 'start': return this.animations.start;
-      case 'idle': return this.direction === 'right' ? this.animations.idleRight : this.animations.idleLeft;
-      case 'move':
-        if (this.direction === 'right') {
-          return Math.abs(this.vx) < MAX_SPEED ? this.animations.moveRightStartUp : this.animations.moveRight;
-        } else {
-          return Math.abs(this.vx) < MAX_SPEED ? this.animations.moveLeftStartUp : this.animations.moveLeft;
-        }
-      case 'leftToRight': return this.animations.leftToRight;
-      case 'rightToLeft': return this.animations.rightToLeft;
-      case 'jump': return this.direction === 'right' ? this.animations.jumpRight : this.animations.jumpLeft;
-      case 'attack': return this.animations.attack;
-      default: return this.animations.idleRight;
-    }
-  }
-
-
   setState(newState) {
     if (this.state !== newState) {
-      this.state = newState;
-      this.frameIndex = 0;
-      this.frameTimer = 0;
+        this.state = newState;
+        this.frameIndex = 0;
+        this.frameTimer = 0;
+
+        if (newState === 'attack') {
+            this.hitRegistered = false; // reset on new attack
+        }
     }
   }
 }

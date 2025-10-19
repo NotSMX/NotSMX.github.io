@@ -11,20 +11,26 @@ export function drawAttackOptions(ctx) {
   attackOptions.forEach(option => option.draw(ctx));
 }
 
-// Check collision with player attack
 export function checkAttackHit(player) {
   if (player.state !== 'attack') return;
 
-  const playerHitbox = {
-    x: player.x,
-    y: player.y - player.scaledHeight,
-    width: player.scaledWidth,
-    height: player.scaledHeight
-  };
+  const playerHitbox = player.getAttackHitbox();
+  if (!playerHitbox) return;
 
-  attackOptions.forEach(option => {
-    if (!option.hit && option.checkCollision(playerHitbox.x, playerHitbox.y, playerHitbox.width, playerHitbox.height)) {
-      option.onHit();
-    }
-  });
+  // Only register hit once per attack
+  if (!player.hitRegistered) {
+    attackOptions.forEach(option => {
+      if (!option.hit && option.checkCollision(
+        playerHitbox.x,
+        playerHitbox.y,
+        playerHitbox.width,
+        playerHitbox.height
+      )) {
+        option.onHit();
+        player.hitRegistered = true; // mark as hit
+      }
+    });
+  }
 }
+
+
