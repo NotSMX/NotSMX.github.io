@@ -7,9 +7,9 @@ const hitEffects = [];
 
 // Create options once, fixed positions
 export const attackOptions = [
-  new AttackOption("Art", 200, 300, 100, 40, "page1.html", 30),
-  new AttackOption("Animation", 500, 300, 100, 40, "page2.html", 50),
-  new AttackOption("Code", 350, 100, 100, 40, "page3.html", 20)
+  new AttackOption("Art", 200, 300, 100, 40, "art.html", 30),
+  new AttackOption("Animation", 500, 300, 100, 40, "animation.html", 50),
+  new AttackOption("Code", 350, 100, 100, 40, "code.html", 20)
 ];
  
 export function drawAttackOptions(ctx) {
