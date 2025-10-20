@@ -96,6 +96,7 @@ export class Player {
 
     // --- ATTACK LOCK ---
     if (this.isAttacking) {
+      this.turning = false; 
       this.vx *= FRICTION;
       this.x += this.vx;
       if(!this.spaceBarHeld) {
@@ -140,7 +141,6 @@ export class Player {
       this.spaceBarHeld = true;
     }
       
-
     // --- MOVEMENT INPUT ---
     if (keys['ArrowLeft']) {
       this.vx -= ACCEL;

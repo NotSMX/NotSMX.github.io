@@ -10,6 +10,7 @@ export class HitEffect {
     this.currentFrame = 0;
     this.ticks = 0;
     this.finished = false;
+    this.rotation = Math.random() * 2 * Math.PI;
   }
 
   update() {
@@ -25,6 +26,10 @@ export class HitEffect {
   draw(ctx) {
     if (this.finished) return;
     const sx = this.currentFrame * this.frameWidth;
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rotation);
+    ctx.translate(-this.x, -this.y);
     ctx.drawImage(
       this.spriteSheet,
       sx, 0, this.frameWidth, this.frameHeight,
@@ -33,5 +38,6 @@ export class HitEffect {
       this.frameWidth / 2,
       this.frameHeight / 2
     );
+    ctx.restore();
   }
 }

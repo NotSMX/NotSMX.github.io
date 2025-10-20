@@ -7,6 +7,32 @@ body {
   align-items: center; /* center horizontally */
   min-height: 100vh;
 }
+
+/* Bigger footer only on the homepage */
+body.home .footer {
+  padding: 30px 0;
+}
+
+body.home .footer-content {
+  gap: 60px;
+}
+
+body.home .pfp {
+  width: 140px;
+  height: 140px;
+  border-width: 4px;
+}
+
+body.home .icon {
+  width: 55px;
+  height: 55px;
+}
+
+body.home .footer-caption {
+  font-size: 16px;
+  margin-top: 8px;
+}
+
 canvas { 
   background:#222; 
   border:3px solid #6eb1e7; 
@@ -105,4 +131,64 @@ canvas {
   margin-top: 20px;
 }
 
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  border-top: 2px solid #6eb1e7;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 2.2s; /* starts after header/nav animations finish */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.pfp {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #6eb1e7;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.icon:hover {
+  transform: scale(1.15);
+  filter: brightness(1.4) drop-shadow(0 0 6px #6eb1e7);
+}
 

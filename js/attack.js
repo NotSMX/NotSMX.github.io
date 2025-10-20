@@ -38,7 +38,7 @@ export function checkAttackHit(player) {
         playerHitbox.width,
         playerHitbox.height
       )) {
-        option.onHit();
+        option.onHit(player.direction === 'right' ? 1 : -1);
         player.hitRegistered = true;
 
         const recoil = 5;
