@@ -56,7 +56,7 @@ export function checkAttackHit(player) {
         const hitY = playerHitbox.y + playerHitbox.height / 2;
 
         // Optional small forward offset to make the spark appear just ahead of the fist
-        const offset = 10;
+        const offset = Math.random() * 20; 
         const adjustedX =
           player.direction === 'right'
             ? hitX + offset

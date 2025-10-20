@@ -21,7 +21,7 @@ export class AttackOption {
     ctx.font = "16px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText(`${this.text} (${this.hp}/${this.maxHp})`, this.x + this.width / 2, this.y + this.height / 2);
+    ctx.fillText(`${this.text} `, this.x + this.width / 2, this.y + this.height / 2);
 
     const barWidth = this.width;
     const barHeight = 5;
