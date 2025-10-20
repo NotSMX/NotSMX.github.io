@@ -1,5 +1,6 @@
 import { AttackOption } from './attackOption.js';
 import { HitEffect } from './hitEffect.js';
+import {PlayerAttack} from './player/attack.js';
 // Sprite and array setup
 const hitSprite = new Image();
 hitSprite.src = 'images/Hit-Sheet.png'; // 6 frames, 70x70 each
@@ -26,7 +27,8 @@ export function drawAttackOptions(ctx) {
 export function checkAttackHit(player) {
   if (player.state !== 'attack' && player.state !== 'mediumAttack' && player.state !== 'heavyAttack') return;
 
-  const playerHitbox = player.getAttackHitbox();
+  const playerHitbox = player.attack.getHitbox();
+
   if (!playerHitbox) return;
 
   // Only register hit once per attack

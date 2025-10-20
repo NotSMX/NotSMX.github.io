@@ -1,7 +1,7 @@
-import { Player } from './player.js';
+import { Player } from './player/player.js';
 import { setupInput } from './input.js';
 import { FLOOR_Y } from './constants.js';
-import { drawAttackOptions, checkAttackHit, attackOptions } from './attack.js';
+import { drawAttackOptions, checkAttackHit, attackOptions } from './enemies.js';
 import { HitEffect } from './hitEffect.js';
 
 const canvas = document.getElementById('gameCanvas');
@@ -15,7 +15,7 @@ sprite.src = 'images/SMX-Sheet.png';
 let player;
 
 sprite.onload = () => {
-  player = new Player(sprite, canvas, 5);
+  player = new Player(sprite, canvas, 0.5);
   player.setup();
   gameLoop();
 };
