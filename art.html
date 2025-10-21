@@ -3,74 +3,93 @@
 <head>
   <meta charset="utf-8">
   <title>SMX Art</title>
-  <link rel="stylesheet" href="css/style.css">
-
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+  </style>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/slideshow.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
-<body class="home">>
+
+<body class="home">
+  <!-- Header -->
   <header id="main-header">
-  <h1 class="title">SMX</h1>
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="art.html">Art</a>
-    <a href="animation.html">Animations</a>
-    <a href="code.html">Code</a>
-    <a href="about.html">About</a>
+    <h1 class="title">Daniel Yu (SMX)</h1>
+    <h2 class="subtitle">Animator, Artist, Editor, Composer, Software Engineer, Full Stack Developer, @ Colby College</h2>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="art.html">Art</a>
+      <a href="animation.html">Animations</a>
+      <a href="code.html">Code</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
-<section class="slideshow-section">
-  <h2>Backgrounds</h2>
-  <div class="slideshow" id="backgrounds-slideshow">
-    <button class="prev">&#10094;</button>
-    <div class="slides-container">
-      <img src="images/BGs/FNF Stage.png" class="slide" />
-      <img src="images/BGs/Fridge.png" class="slide" />
-      <img src="images/BGs/Hospital Empty.png" class="slide" />
-      <img src="images/BGs/Xaviers Bedroom Empty.png" class="slide" />
+  <section class="slideshow-section" id="backgrounds-slideshow-section">
+    <h2>Backgrounds</h2>
+    <div class="slideshow" id="backgrounds-slideshow">
+      <div class="slides-container"></div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
     </div>
-    <button class="next">&#10095;</button>
-  </div>
-</section>
+  </section>
 
-<section class="slideshow-section">
-  <h2>Character Art</h2>
-  <div class="slideshow" id="characters-slideshow">
-    <button class="prev">&#10094;</button>
-    <div class="slides-container">
-      <img src="images/Character/Extras.png" class="slide" />
-    <img src="images/Character/Ezen.png" class="slide" />
-    <img src="images/Character/Icons.png" class="slide" />
-    <img src="images/Character/kev_taco.png" class="slide" />
-    <img src="images/Character/Milo.png" class="slide" />
-    <img src="images/Character/Nael.png" class="slide" />
-    <img src="images/Character/Selene.png" class="slide" />
-    <img src="images/Character/Sketching Arsenal.png" class="slide" />
-    <img src="images/Character/Xavier.png" class="slide" />
+  <section class="slideshow-section" id="characters-slideshow-section">
+    <h2>Character Art</h2>
+    <div class="slideshow" id="characters-slideshow">
+      <div class="slides-container"></div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
     </div>
-    <button class="next">&#10095;</button>
-  </div>
-</section>
+  </section>
 
-<footer class="footer">
-  <div class="footer-content">
-    <img src="https://yt3.googleusercontent.com/Fj3vyrCV-AAmawF9rZj9wLL3jnMcfMOzS1tBC3SCkMJ631XM88T0hS-EZXISW_XNMNw1-zaK=s160-c-k-c0x00ffffff-no-rj" alt="YouTube Profile Picture" class="pfp">
-
-    <div class="social-icons">
-      <a href="https://www.youtube.com/@SuperXrayminecraft39" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/YouTube_social_red_circle_%282024%29.svg/2048px-YouTube_social_red_circle_%282024%29.svg.png" alt="YouTube" class="icon">
-      </a>
-      <a href="https://github.com/NotSMX" target="_blank">
-        <img src="https://images.icon-icons.com/3685/PNG/512/github_logo_icon_229278.png" alt="GitHub" class="icon">
-      </a>
-      <a href="https://www.instagram.com/idonthaveaninstasostopasking/" target="_blank">
-        <img src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-circle-512.png" alt="Instagram" class="icon">
-      </a>
-      <a href="https://www.linkedin.com/in/daniel-yu-456b90323/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/1200px-LinkedIn_icon_circle.svg.png" alt="LinkedIn" class="icon">
-      </a>
+  <section class="slideshow-section" id="concepts-slideshow-section">
+    <h2>Concept Art</h2>
+    <div class="slideshow" id="concepts-slideshow">
+      <div class="slides-container"></div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
     </div>
-  </div>
-</footer>
-<script type="module" src="js/Slideshow.js"></script>
+  </section>
+
+  <section class="slideshow-section" id="scenes-slideshow-section">
+    <h2>Scenes</h2>
+    <div class="slideshow" id="scenes-slideshow">
+      <div class="slides-container"></div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+
+  <footer class="footer subpage-footer">
+    <div class="footer-content">
+      <img src="https://yt3.googleusercontent.com/Fj3vyrCV-AAmawF9rZj9wLL3jnMcfMOzS1tBC3SCkMJ631XM88T0hS-EZXISW_XNMNw1-zaK=s160-c-k-c0x00ffffff-no-rj" 
+           alt="YouTube Profile Picture" class="pfp">
+
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@SuperXrayminecraft39" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/YouTube_social_red_circle_%282024%29.svg/2048px-YouTube_social_red_circle_%282024%29.svg.png" 
+               alt="YouTube" class="icon">
+        </a>
+        <a href="https://github.com/NotSMX" target="_blank">
+          <img src="https://images.icon-icons.com/3685/PNG/512/github_logo_icon_229278.png" 
+               alt="GitHub" class="icon">
+        </a>
+        <a href="https://www.instagram.com/idonthaveaninstasostopasking/" target="_blank">
+          <img src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-circle-512.png" 
+               alt="Instagram" class="icon">
+        </a>
+        <a href="https://www.linkedin.com/in/daniel-yu-456b90323/" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/1200px-LinkedIn_icon_circle.svg.png" 
+               alt="LinkedIn" class="icon">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/Slideshow.js"></script>
 </body>
 </html>

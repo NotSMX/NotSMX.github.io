@@ -1,0 +1,56 @@
+/* footer.css */
+
+body.home .footer {
+  padding: 30px 0;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+body.home .footer-content {
+  gap: 60px;
+}
+
+.pfp {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #6eb1e7;
+}
+
+body.home .pfp {
+  width: 140px;
+  height: 140px;
+  border-width: 4px;
+}
+
+.footer-caption {
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+body.home .icon {
+  width: 55px;
+  height: 55px;
+}
+
+.icon:hover {
+  transform: scale(1.15);
+  filter: brightness(1.4) drop-shadow(0 0 6px #6eb1e7);
+}

@@ -42,25 +42,6 @@ canvas {
   display: none;
 }
 
-#attack-options {
-  position: absolute;
-  bottom: 20px;
-  text-align: center;
-}
-
-a.attack-link {
-  color: #6eb1e7;
-  text-decoration: none;
-  font-family: monospace;
-  margin: 0 10px;
-  font-size: 18px;
-}
-
-a.attack-link:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
 #main-header {
   text-align: center;
   position: relative;

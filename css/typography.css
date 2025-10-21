@@ -1,0 +1,24 @@
+/* typography.css */
+.title {
+  font-family: "Jersey 15", sans-serif;
+  font-size: 4rem;
+  letter-spacing: 4px;
+  color: #3493ff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  margin: 0;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+h2 {
+  font-family: 'Jersey 15', sans-serif;
+  font-size: 1.5rem;
+  color: #22aeff;
+  margin-top: 10px;
+  opacity: 0;
+  text-align: center;
+  transform: translateY(-30px);
+  animation: slideDown 0.8s ease-out forwards;
+  animation-delay: 0.5s;
+}
