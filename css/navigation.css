@@ -30,6 +30,7 @@
 .nav-links a:nth-child(3) { animation-delay: 1.6s; }
 .nav-links a:nth-child(4) { animation-delay: 1.9s; }
 .nav-links a:nth-child(5) { animation-delay: 2.2s; }
+.nav-links a:nth-child(6) { animation-delay: 2.5s; }
 
 .nav-links a:hover {
   color: #fff;

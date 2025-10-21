@@ -22,7 +22,30 @@
     transition: 0.5s;
 }
 
+
+/* Dark overlay for the image only */
+.container .slide .item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: none;
+    z-index: 0;
+    transition: background 0.3s ease;
+}
+
+/* Keep text/content above the dark overlay */
+.container .slide .item .content {
+    position: relative;
+    z-index: 1;
+}
+
+.slide .item:nth-child(1)::before,
+.slide .item:nth-child(2)::before {
+    background: rgba(0, 0, 0, 0.75); /* adjust opacity to your liking */
+}
+
 .slide .item:nth-child(1),
+
 .slide .item:nth-child(2){
     top: 0;
     left: 0;
@@ -30,30 +53,34 @@
     border-radius: 0;
     width: 100%;
     height: 100%;
+    
 }
 
 
 .slide .item:nth-child(3){
-    left: 50%;
+    left: 70%;
 }
 .slide .item:nth-child(4){
-    left: calc(50% + 220px);
+    left: calc(70% + 220px);
+    opacity: 50%;
 }
 .slide .item:nth-child(5){
-    left: calc(50% + 440px);
+    left: calc(70% + 440px);
+    opacity: 20%;
 }
 
 /* here n = 0, 1, 2, 3,... */
 .slide .item:nth-child(n + 6){
-    left: calc(50% + 660px);
+    left: calc(70% + 660px);
     opacity: 0;
+    
 }
 
 .item .content{
     position: absolute;
     top: 50%;
     left: 100px;
-    width: 300px;
+    width: 500px;
     text-align: left;
     color: #ffffff;
     transform: translate(0, -50%);
@@ -66,14 +93,27 @@
     display: block;
 }
 
-
-.content .name{
-    color: #ff0000;
-    font-size: 40px;
+.content .name {
+    font-size: 50px;
     text-transform: uppercase;
     font-weight: bold;
     opacity: 0;
     animation: animate 1s ease-in-out 1 forwards;
+    color:white;
+}
+
+.content .name.LR {
+    background: linear-gradient(90deg, #ffee00, #7f09ee); /* example gradient */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.content .name.Sans {
+    background: linear-gradient(90deg, #00fff2, #ee0909); /* example gradient */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
@@ -84,13 +124,22 @@
     animation: animate 1s ease-in-out 0.3s 1 forwards;
 }
 
+.content .length{
+    margin-top: px;
+    margin-bottom: 20px;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.5);
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+
 .content button{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     opacity: 0;
-    animation: animate 1s ease-in-out 0.6s 1 forwards;
+    animation: animate 1s ease-in-out 0.9s 1 forwards;
 }
 
 

@@ -1,7 +1,7 @@
 /* typography.css */
 .title {
-  font-family: "Jersey 15", sans-serif;
-  font-size: 4rem;
+  font-family: "Jersey 20", sans-serif;
+  font-size: 5rem;
   letter-spacing: 4px;
   color: #3493ff;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
@@ -12,9 +12,21 @@
 }
 
 h2 {
-  font-family: 'Jersey 15', sans-serif;
+  font-family: 'Jersey 25', sans-serif;
   font-size: 1.5rem;
-  color: #22aeff;
+  color: #0077ff;
+  margin-top: 10px;
+  opacity: 0;
+  text-align: center;
+  transform: translateY(-30px);
+  animation: slideDown 0.8s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+h3 {
+  font-family: 'Jersey 25', sans-serif;
+  font-size: 1.5rem;
+  color: #6895c9;
   margin-top: 10px;
   opacity: 0;
   text-align: center;
