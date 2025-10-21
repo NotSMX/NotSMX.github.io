@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/typography.css">
   <link rel="stylesheet" href="css/navigation.css">
   <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/music.css">
+  <link rel="stylesheet" href="css/code.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
 
@@ -29,29 +29,31 @@
     </nav>
   </header>
 
-  <h3>I'm practicing all sorts of genres! Here are some good examples.</h3>
-  <div class="music-grid">
-    <div class="music-item">
-    <h3>Heavy Metal</h3>
-      <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/5sidxyF5hVuEcJopHOAf7I?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
-    <div class="music-item">
-      <h3>Drum & Bass</h3>
-      <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4ETrnzFU3CX7kdzxojygi9?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
-    <div class="music-item">
-    <h3>Piano</h3>
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/5LwfXpdCeDn04OaPifpeqC?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-  </div>
-    <div class="music-item">
-    <h3>Soundtrack</h3>
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/0gg6mga0YFNYo3mS1N88zS?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-  </div>
-  </div>
-  
-  
-  <h3>This page features all my best work! For everything else, please check my Spotify.</h3>
+   <section class="intro">
+    <h2>Code Projects</h2>
+    <p>Here are some of my favorite programming projects — blending design, animation, and software engineering.</p>
+  </section>
 
+  <div class="code-grid">
+    <div class="code-item">
+      <h3>🎮 Game Engine (JS)</h3>
+      <p>A 2D canvas-based engine for animation, physics, and player control — used in several SMX visual projects.</p>
+      <a href="https://github.com/NotSMX/GameEngine" target="_blank" class="btn">View on GitHub</a>
+      <canvas id="demoCanvas1" width="300" height="150"></canvas>
+    </div>
+
+    <div class="code-item">
+      <h3>🧠 Edit Distance Visualizer (Python/JS)</h3>
+      <p>Algorithm visualization for computing string similarity using dynamic programming.</p>
+      <a href="https://github.com/NotSMX/EditDistance" target="_blank" class="btn">View on GitHub</a>
+    </div>
+
+    <div class="code-item">
+      <h3>💻 Parallel Image Processor (C/JS)</h3>
+      <p>Applies filters pixel-by-pixel using multiple threads to compare parallel performance.</p>
+      <a href="https://github.com/NotSMX/ParallelImage" target="_blank" class="btn">View on GitHub</a>
+    </div>
+  </div>
 
   <footer class="footer subpage-footer">
     <div class="footer-content">
