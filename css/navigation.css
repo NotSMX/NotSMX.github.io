@@ -4,12 +4,12 @@
   position: relative;
   top: 0;
   width: 100%;
-  padding-top: 20px;
+  padding-top: 50px;
   z-index: 10;
 }
 
 .nav-links {
-  margin-top: 0px;
+  margin-top: 10px;
   display: inline-block;
 }
 
