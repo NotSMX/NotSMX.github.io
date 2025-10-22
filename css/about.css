@@ -20,83 +20,89 @@
 }
 
 /* Timeline Section */
-.timeline-section {
-  background: #0f0f0f;
-  padding: 80px 10%;
+/* Timeline Wrapper */
+.timeline-wrapper {
+  padding: 60px 10%;
+  background: #0b0b0b;
   color: white;
-  font-family: "Jersey 15", sans-serif;
-}
-
-.timeline-section h2 {
   text-align: center;
-  font-size: 2.2rem;
-  color: #6eb1e7;
-  margin-bottom: 50px;
+  font-family: "Jersey 15", sans-serif;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
-/* Timeline layout */
+.timeline-wrapper h2 {
+  color: #6eb1e7;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+/* Grid Layout for 3 Timelines */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+}
+
+/* Column Titles */
+.timeline-column h3 {
+  color: #a8d9ff;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Individual Timeline */
 .timeline {
   position: relative;
-  margin: 0 auto;
-  padding-left: 30px;
-  max-width: 700px;
+  padding-left: 20px;
   border-left: 3px solid #6eb1e7;
 }
 
 .timeline-item {
+  margin: 30px 0;
   position: relative;
-  margin-bottom: 50px;
 }
 
 .timeline-dot {
-  position: absolute;
-  left: -11px;
-  top: 0;
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   background: #6eb1e7;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(110, 177, 231, 0.8);
+  position: absolute;
+  left: -9px;
+  top: 4px;
+  box-shadow: 0 0 10px #6eb1e7;
 }
 
 .timeline-content {
-  padding-left: 25px;
+  background: #141414;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.timeline-content h3 {
-  font-size: 1.5rem;
-  color: #fff;
-  margin-bottom: 5px;
-  text-align: center;
+.timeline-content:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(110, 177, 231, 0.3);
+}
+
+.timeline-content h4 {
+  margin: 0;
+  color: #6eb1e7;
+  font-size: 1.3rem;
 }
 
 .timeline-content .date {
   display: block;
-  font-size: 1rem;
-  color: #6eb1e7;
-  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 5px;
 }
 
 .timeline-content p {
-  font-size: 1.1rem;
-  color: #d0d0d0;
+  font-size: 1rem;
+  color: #ddd;
   line-height: 1.5;
-}
-
-/* Subtle scroll fade-in animation */
-.timeline-item {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-.timeline-item:nth-child(1) { animation-delay: 0.1s; }
-.timeline-item:nth-child(2) { animation-delay: 0.3s; }
-.timeline-item:nth-child(3) { animation-delay: 0.5s; }
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
