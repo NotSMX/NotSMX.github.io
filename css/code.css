@@ -1,16 +1,17 @@
 .code-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  padding: 50px;
   text-align: center;
 }
 
 .code-item {
-  background: #111;
+  background: linear-gradient(145deg, #111, #181818);
+  border: 2px solid #6eb1e7;
   border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -19,17 +20,36 @@
   box-shadow: 0 0 40px rgba(110,177,231,0.3);
 }
 
+.code-item p {
+  color: #ccc;
+  font-size: 16px;
+  margin-top: 10px;
+  line-height: 1.4em;
+}
+
 .btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
+  margin-top: 15px;
+  padding: 10px 25px;
   background: #6eb1e7;
-  color: #fff;
+  color: white;
   border-radius: 8px;
   text-decoration: none;
+  font-weight: bold;
   transition: background 0.3s ease;
 }
 
 .btn:hover {
   background: #4c90c4;
+}
+
+p{
+  font-size: 18px;
+  color: #ddd;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 15px;
+  line-height: 1.6em;
+  text-align: center;
+  animation: ease-in 1s fadeIn;
 }
