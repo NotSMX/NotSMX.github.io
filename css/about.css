@@ -19,8 +19,7 @@
   color: #d0d0d0;
 }
 
-/* Timeline Section */
-/* Timeline Wrapper */
+
 .timeline-wrapper {
   padding: 60px 10%;
   background: #0b0b0b;
@@ -37,7 +36,7 @@
   text-transform: uppercase;
 }
 
-/* Grid Layout for 3 Timelines */
+
 .timeline-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

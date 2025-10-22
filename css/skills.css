@@ -1,0 +1,13 @@
+.skill-item .skill-icon {
+  display: flex;
+  gap: 15px;
+  width: 36px;
+  height: 36px;
+}
+
+.skill-item h4 {
+text-align: center;
+  margin: 0;
+  color: #6eb1e7;
+  font-size: 1.3rem;
+}
