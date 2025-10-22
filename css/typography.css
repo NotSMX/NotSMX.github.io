@@ -34,3 +34,16 @@ h3 {
   animation: slideDown 0.8s ease-out forwards;
   animation-delay: 1s;
 }
+
+p {
+  font-size: 18px;
+  font-family: 'Jersey 25', sans-serif;
+  color: rgb(151, 151, 151);
+  max-width: 800px;
+  
+  margin: 0 auto;
+  margin-top: 15px;
+  line-height: 1.6em;
+  text-align: center;
+  animation: fadeIn 1s ease forwards;
+}

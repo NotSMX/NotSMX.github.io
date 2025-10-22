@@ -1,0 +1,42 @@
+/* Controls Section */
+.controls-section {
+  text-align: center;
+  padding: 60px 10%;
+  background: #111;
+  color: white;
+  font-family: "Jersey 15", sans-serif;
+  opacity: 0;
+  border-top: 3px solid #6eb1e7;
+  border-bottom: 3px solid #6eb1e7;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.controls-section h2 {
+  font-size: 2.2rem;
+  color: #6eb1e7;
+  margin-bottom: 20px;
+}
+
+.controls-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+
+.controls-section li {
+  margin: 8px 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.controls-section li:hover {
+  transform: scale(1.05);
+  color: #a8d9ff;
+}
+
+/* Simple fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
