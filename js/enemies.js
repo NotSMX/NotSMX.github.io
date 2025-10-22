@@ -10,7 +10,8 @@ const hitEffects = [];
 export const attackOptions = [
   new AttackOption("Art", 200, 300, 100, 40, "art.html", 10),
   new AttackOption("Animation", 500, 300, 100, 40, "animation.html", 10),
-  new AttackOption("Code", 350, 100, 100, 40, "code.html", 10)
+  new AttackOption("Music", 650, 300, 100, 40, "music.html", 10),
+  new AttackOption("Code", 50, 300, 100, 40, "code.html", 10)
 ];
  
 export function drawAttackOptions(ctx) {
