@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>SMX</title>
+  <title>SMX Art</title>
   <link rel="stylesheet" href="css/style.css">
-  
+
 </head>
 <body class="home">>
   <header id="main-header">
@@ -17,10 +17,39 @@
     <a href="about.html">About</a>
     </nav>
   </header>
-  <canvas id="gameCanvas" width="800" height="400"></canvas>
-  <div id="attack-options" class="hidden"></div>
-  <script type="module" src="js/main.js"></script>
-  
+
+<section class="slideshow-section">
+  <h2>Backgrounds</h2>
+  <div class="slideshow" id="backgrounds-slideshow">
+    <button class="prev">&#10094;</button>
+    <div class="slides-container">
+      <img src="images/BGs/FNF Stage.png" class="slide" />
+      <img src="images/BGs/Fridge.png" class="slide" />
+      <img src="images/BGs/Hospital Empty.png" class="slide" />
+      <img src="images/BGs/Xaviers Bedroom Empty.png" class="slide" />
+    </div>
+    <button class="next">&#10095;</button>
+  </div>
+</section>
+
+<section class="slideshow-section">
+  <h2>Character Art</h2>
+  <div class="slideshow" id="characters-slideshow">
+    <button class="prev">&#10094;</button>
+    <div class="slides-container">
+      <img src="images/Character/Extras.png" class="slide" />
+    <img src="images/Character/Ezen.png" class="slide" />
+    <img src="images/Character/Icons.png" class="slide" />
+    <img src="images/Character/kev_taco.png" class="slide" />
+    <img src="images/Character/Milo.png" class="slide" />
+    <img src="images/Character/Nael.png" class="slide" />
+    <img src="images/Character/Selene.png" class="slide" />
+    <img src="images/Character/Sketching Arsenal.png" class="slide" />
+    <img src="images/Character/Xavier.png" class="slide" />
+    </div>
+    <button class="next">&#10095;</button>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="footer-content">
@@ -42,5 +71,6 @@
     </div>
   </div>
 </footer>
+<script type="module" src="js/Slideshow.js"></script>
 </body>
 </html>
