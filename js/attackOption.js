@@ -42,7 +42,7 @@ export class AttackOption {
       this.x += this.vx;
       this.y += this.vy;
       this.vy *= GRAVITY; 
-      this.vx *= FRICTION;
+      this.vx *= FRICTION - 0.1;
       if (Math.abs(this.x - this.tempx) < 1 && Math.abs(this.y - this.tempy) < 1) {
         this.x = this.tempx;
         this.y = this.tempy;

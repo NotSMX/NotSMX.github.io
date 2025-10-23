@@ -24,7 +24,6 @@
 }
 
 
-/* Dark overlay for the image only */
 .container .slide .item::before {
     content: "";
     position: absolute;
@@ -34,7 +33,6 @@
     transition: background 0.3s ease;
 }
 
-/* Keep text/content above the dark overlay */
 .container .slide .item .content {
     position: relative;
     z-index: 1;
@@ -42,7 +40,7 @@
 
 .slide .item:nth-child(1)::before,
 .slide .item:nth-child(2)::before {
-    background: rgba(0, 0, 0, 0.75); /* adjust opacity to your liking */
+    background: rgba(0, 0, 0, 0.75); 
 }
 
 .slide .item:nth-child(1),
@@ -57,6 +55,9 @@
     
 }
 
+.slide .item:nth-child(2) .content{
+    display: block;
+}
 
 .slide .item:nth-child(3){
     left: 70%;
@@ -70,7 +71,6 @@
     opacity: 20%;
 }
 
-/* here n = 0, 1, 2, 3,... */
 .slide .item:nth-child(n + 6){
     left: calc(70% + 660px);
     opacity: 0;
@@ -87,11 +87,6 @@
     transform: translate(0, -50%);
     font-family: system-ui;
     display: none;
-}
-
-
-.slide .item:nth-child(2) .content{
-    display: block;
 }
 
 .content .name {
@@ -142,22 +137,6 @@
     opacity: 0;
     animation: animate 1s ease-in-out 0.9s 1 forwards;
 }
-
-
-@keyframes animate {
-    from{
-        opacity: 0;
-        transform: translate(0, 100px);
-    }
-
-    to{
-        opacity: 1;
-        transform: translate(0);
-        filter: blur(0);
-    }
-}
-
-
 
 .button{
     width: 100%;
