@@ -17,8 +17,6 @@ export class Player {
     this.turning = false;
     this.state = 'start';
     this.isAttacking = false;
-    this.spaceBarHeld = false;
-
 
     this.spriteAnimator = new SpriteAnimator(sprite, 750, 340, 10, 10, scale, PlayerAnimations);
     this.spriteAnimator.setAnimation('start');

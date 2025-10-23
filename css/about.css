@@ -2,7 +2,6 @@
 .intro-section {
   text-align: center;
   padding: 60px 10%;
-  background: #0b0b0b;
   color: white;
   font-family: "Jersey 15", sans-serif;
 }
@@ -22,7 +21,6 @@
 
 .timeline-wrapper {
   padding: 60px 10%;
-  background: #0b0b0b;
   color: white;
   text-align: center;
   font-family: "Jersey 15", sans-serif;
@@ -74,7 +72,6 @@
 }
 
 .timeline-content {
-  background: #141414;
   border: 1px solid #333;
   border-radius: 10px;
   padding: 15px;
