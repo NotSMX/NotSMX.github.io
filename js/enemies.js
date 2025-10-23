@@ -32,7 +32,6 @@ export function checkAttackHit(player) {
 
   if (!playerHitbox) return;
 
-  // Only register hit once per attack
   if (!player.hitRegistered) {
     attackOptions.forEach(option => {
       if (!option.hit && option.checkCollision(
@@ -45,7 +44,6 @@ export function checkAttackHit(player) {
         player.hitRegistered = true;
 
         const recoil = 5;
-        // Apply recoil to player on hit
         if (player.state === 'heavyAttack') {
           if (player.direction === 'right') {
             player.vx -= recoil; 
@@ -53,12 +51,8 @@ export function checkAttackHit(player) {
             player.vx += recoil;
           }
         }
-
-        // Add hit animation at collision point
         const hitX = playerHitbox.x + playerHitbox.width / 2;
         const hitY = playerHitbox.y + playerHitbox.height / 2;
-
-        // Optional small forward offset to make the spark appear just ahead of the fist
         const offset = Math.random() * 20; 
         const adjustedX =
           player.direction === 'right'

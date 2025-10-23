@@ -1,8 +1,7 @@
 import { Player } from './player/player.js';
 import { setupInput } from './input.js';
-import { FLOOR_Y } from './constants.js';
+import { targetFPS } from './constants.js';
 import { drawAttackOptions, checkAttackHit, attackOptions } from './enemies.js';
-import { HitEffect } from './hitEffect.js';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -40,8 +39,18 @@ function draw() {
   drawAttackOptions(ctx);
 }
 
-function gameLoop() {
-  update();
-  draw();
+let lastTime = 0;
+const frameTime = 1000 / targetFPS;
+
+function gameLoop(timestamp) {
+  if (!lastTime) lastTime = timestamp;
+  const deltaTime = timestamp - lastTime;
+  
+  if (deltaTime >= frameTime) {
+    update();
+    draw();
+    lastTime = timestamp;
+  }
+  
   requestAnimationFrame(gameLoop);
 }

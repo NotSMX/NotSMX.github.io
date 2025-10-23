@@ -44,7 +44,6 @@ export const sceneImages = [
   "images/Scenes/Trio.png"
 ];
 
-// optional: image blurbs
 export const blurbs = {
 
 };

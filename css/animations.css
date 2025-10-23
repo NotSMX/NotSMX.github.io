@@ -14,3 +14,14 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
+@keyframes animate {
+    from{
+        opacity: 0;
+        transform: translate(0, 100px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
