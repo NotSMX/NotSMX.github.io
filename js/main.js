@@ -40,8 +40,19 @@ function draw() {
   drawAttackOptions(ctx);
 }
 
-function gameLoop() {
-  update();
-  draw();
+let lastTime = 0;
+const targetFPS = 600;
+const frameTime = 1000 / targetFPS;
+
+function gameLoop(timestamp) {
+  if (!lastTime) lastTime = timestamp;
+  const deltaTime = timestamp - lastTime;
+  
+  if (deltaTime >= frameTime) {
+    update();
+    draw();
+    lastTime = timestamp;
+  }
+  
   requestAnimationFrame(gameLoop);
 }

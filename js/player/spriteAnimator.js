@@ -10,7 +10,7 @@ export class SpriteAnimator {
     this.currentAnimation = null;
     this.frameIndex = 0;
     this.frameTimer = 0;
-    this.frameSpeed = 15; // lower is faster
+    this.frameSpeed = 6; // lower is faster
   }
 
   setAnimation(name) {
