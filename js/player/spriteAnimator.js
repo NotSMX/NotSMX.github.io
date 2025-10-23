@@ -15,20 +15,30 @@ export class SpriteAnimator {
 
   setAnimation(name) {
     if (this.currentAnimation !== name) {
-      this.currentAnimation = name;
-      this.frameIndex = 0;
-      this.frameTimer = 0;
-    }
+    this.currentAnimation = name;
+      if (this.currentAnimation !== "jumpLeft" && this.currentAnimation !== "jumpRight") {
+        this.frameIndex = 0;
+        this.frameTimer = 0;
+      }
+     
   }
+}
 
   update() {
+    console.log(this.currentAnimation, this.frameIndex);
     if (!this.currentAnimation) return;
     this.frameTimer++;
     if (this.frameTimer >= this.frameSpeed) {
       this.frameTimer = 0;
       this.frameIndex++;
       const frames = this.animations[this.currentAnimation];
-      if (this.frameIndex >= frames.length) this.frameIndex = 0;
+      if (this.frameIndex >= frames.length) {
+        if (this.currentAnimation !== "jumpLeft" && this.currentAnimation !== "jumpRight") {
+          this.frameIndex = 0;
+        } else {
+          this.frameIndex = frames.length - 1; // hold last frame for jump
+        }
+      }
     }
   }
 

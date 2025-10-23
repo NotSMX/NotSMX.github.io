@@ -17,8 +17,6 @@ export class Player {
     this.turning = false;
     this.state = 'start';
     this.isAttacking = false;
-    this.spaceBarHeld = false;
-
 
     this.spriteAnimator = new SpriteAnimator(sprite, 750, 340, 10, 10, scale, PlayerAnimations);
     this.spriteAnimator.setAnimation('start');
@@ -62,16 +60,6 @@ export class Player {
   }
 
   draw(ctx) {
-    // // Debug draw hitbox 
-    // ctx.save(); 
-    // ctx.strokeStyle = 'red'; 
-    // ctx.lineWidth = 2; 
-    // const playerHitbox = this.attack.getHitbox(); 
-    
-    // if (playerHitbox) { 
-    // ctx.strokeRect(playerHitbox.x, playerHitbox.y, playerHitbox.width, playerHitbox.height); 
-    // } 
-    // ctx.restore();
     this.spriteAnimator.draw(ctx, this.x, this.y);
   }
 

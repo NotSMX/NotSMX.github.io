@@ -1,0 +1,23 @@
+/* base.css */
+body {
+  margin: 0;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+}
+
+canvas {
+  display: block;
+  margin: 20px auto 0;
+  background: #222;
+  border: 3px solid #6eb1e7;
+  opacity: 0;                 
+  animation: fadeIn 4s ease forwards; 
+}
+
+.hidden {
+  display: none;
+}
