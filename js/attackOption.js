@@ -1,4 +1,4 @@
-import { GRAVITY, FLOOR_Y, JUMP_STRENGTH, MAX_SPEED, ACCEL, FRICTION} from './constants.js';
+import { GRAVITY, FRICTION} from './constants.js';
 
 export class AttackOption {
   constructor(text, x, y, width, height, link, hp = 3) {
@@ -18,7 +18,7 @@ export class AttackOption {
   }
 
   draw(ctx) {
-    // Draw background
+
     ctx.fillStyle = this.hit ? "#0f0" : "#ffcc00";
     ctx.fillRect(this.x, this.y, this.width, this.height);
 
@@ -38,14 +38,11 @@ export class AttackOption {
   }
 
   update() {
-    // If knockback is active, apply velocity
     if (this.knockbacking) {
       this.x += this.vx;
       this.y += this.vy;
-      this.vy *= GRAVITY; // small gravity effect
-      this.vx *= 0.9; // friction
-
-      // stop when near original position
+      this.vy *= GRAVITY; 
+      this.vx *= FRICTION;
       if (Math.abs(this.x - this.tempx) < 1 && Math.abs(this.y - this.tempy) < 1) {
         this.x = this.tempx;
         this.y = this.tempy;
@@ -53,7 +50,6 @@ export class AttackOption {
         this.vy = 0;
         this.knockbacking = false;
       } else {
-        // Smoothly ease back to original position if displaced slightly
         this.x += (this.tempx - this.x) * 0.1;
         this.y += (this.tempy - this.y) * 0.1;}
     }
@@ -70,14 +66,14 @@ export class AttackOption {
 
   onHit(direction = 1) {
     this.knockbacking = true;
-    this.vx = Math.random() * 5 * direction; // push left or right
+    this.vx = Math.random() * 5 * direction;
     this.vy = Math.random() * 4 - 2;
     if (this.hp > 0) {
       this.hp--;
     }
     if (this.hp <= 0 && !this.hit) {
       this.hit = true;
-      window.location.href = this.link; // navigate when HP reaches 0
+      window.location.href = this.link;
     }
   }
 }

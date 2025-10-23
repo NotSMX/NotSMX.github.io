@@ -25,7 +25,6 @@ export class SpriteAnimator {
 }
 
   update() {
-    console.log(this.currentAnimation, this.frameIndex);
     if (!this.currentAnimation) return;
     this.frameTimer++;
     if (this.frameTimer >= this.frameSpeed) {

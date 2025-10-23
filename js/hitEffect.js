@@ -1,5 +1,5 @@
 export class HitEffect {
-  constructor(x, y, spriteSheet, frameWidth = 350, frameHeight = 350, frameCount = 8, frameSpeed = 7) {
+  constructor(x, y, spriteSheet, frameWidth = 350, frameHeight = 350, frameCount = 8, frameSpeed = 4) {
     this.x = x;
     this.y = y;
     this.spriteSheet = spriteSheet;
@@ -33,7 +33,7 @@ export class HitEffect {
     ctx.drawImage(
       this.spriteSheet,
       sx, 0, this.frameWidth, this.frameHeight,
-      this.x - this.frameWidth / 4, // scale down a bit visually
+      this.x - this.frameWidth / 4,
       this.y - this.frameHeight / 4,
       this.frameWidth / 2,
       this.frameHeight / 2
