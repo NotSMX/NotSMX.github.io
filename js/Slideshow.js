@@ -16,7 +16,6 @@ function setupCarousel(sectionId, images) {
 
   let index = 0;
 
-  // Create slides
   images.forEach(src => {
     const img = document.createElement("img");
     img.src = src;
@@ -30,9 +29,7 @@ function setupCarousel(sectionId, images) {
   function updateSlides() {
     slides.forEach((slide, i) => slide.classList.remove("active"));
     slides[index].classList.add("active");
-
-    // calculate translateX to center active slide
-    const slideWidth = slides[0].offsetWidth + 20; // include margin
+    const slideWidth = slides[0].offsetWidth + 20;
     const offset = -index * slideWidth + (container.offsetWidth - slideWidth) / 2;
     container.style.transform = `translateX(${offset}px)`;
   }
